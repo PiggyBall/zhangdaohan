@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张道涵 — 学术主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fcfbf8;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --accent: #1e3a5f;
+            --accent-light: #2a5580;
+            --gold: #8b6914;
+            --gold-light: #faf3e0;
+            --border: #e8e5df;
+            --border-light: #f0ede8;
+            --nav-width: 200px;
+            --content-max: 880px;
+            --base: 8px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 17px;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            text-wrap: pretty;
+        }
+
+        /* ── Sidebar Navigation ── */
+        .nav-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--nav-width);
+            height: 100vh;
+            padding: 48px 28px;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            background: transparent;
+        }
+
+        .nav-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav-title-sub {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .nav-links a.active { font-weight: 500; }
+
+        /* ── Main Content ── */
+        .main-content {
+            margin-left: var(--nav-width);
+            max-width: var(--content-max);
+            padding: 64px 64px 120px;
+        }
+
+        /* ── Section ── */
+        section {
+            margin-bottom: 72px;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding-top: 40px;
+            margin-bottom: 64px;
+        }
+
+        .hero-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.03em;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 560px;
+        }
+
+        .hero-sub strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .hero-contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-contact-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-contact-row .contact-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 0.7rem;
+        }
+
+        /* ── Publications ── */
+        .pub-group {
+            margin-bottom: 36px;
+        }
+
+        .pub-group-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pub-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pub-item {
+            font-size: 0.88rem;
+            line-height: 1.65;
+            padding-left: 0;
+            color: var(--text);
+        }
+
+        .pub-item .authors { color: var(--text); }
+        .pub-item .authors .self {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .pub-item .title { font-weight: 500; }
+        .pub-item .journal {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .pub-item .meta {
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+        }
+
+        .pub-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-left: 6px;
+            letter-spacing: 0.03em;
+        }
+
+        .pub-tag.ssci {
+            background: #e8f0f8;
+            color: #1e3a5f;
+        }
+
+        .pub-tag.top {
+            background: var(--gold-light);
+            color: var(--gold);
+        }
+
+        /* ── Timeline (Education) ── */
+        .timeline {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 24px;
+            align-items: baseline;
+        }
+
+        .timeline-date {
+            flex-shrink: 0;
+            width: 140px;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .timeline-body {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .timeline-body .inst {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .timeline-body .detail {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+        }
+
+        /* ── Awards ── */
+        .award-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .award-item {
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+            font-size: 0.88rem;
+        }
+
+        .award-date {
+            flex-shrink: 0;
+            width: 100px;
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+        }
+
+        .award-name { color: var(--text); }
+        .award-granter {
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+            margin-left: 6px;
+        }
+
+        /* ── Grants ── */
+        .grant-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .grant-item {
+            font-size: 0.86rem;
+            line-height: 1.6;
+        }
+
+        .grant-title {
+            font-weight: 500;
+        }
+
+        .grant-meta {
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+        }
+
+        /* ── Skills ── */
+        .skills-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-chip {
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            background: var(--surface);
+        }
+
+        /* ── Contact Footer ── */
+        .contact-footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            font-size: 0.82rem;
+            color: var(--text-tertiary);
+            line-height: 1.8;
+        }
+
+        .contact-footer strong { color: var(--text-secondary); font-weight: 500; }
+
+        /* ── Mobile ── */
+        @media (max-width: 860px) {
+            .nav-sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 24px 24px 16px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: baseline;
+                gap: 12px 24px;
+                background: var(--bg);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-title-sub { margin-bottom: 0; display: none; }
+            .nav-links {
+                flex-direction: row;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .nav-links a { border-bottom: none; font-size: 0.78rem; }
+
+            .main-content {
+                margin-left: 0;
+                padding: 40px 24px 80px;
+            }
+
+            .hero-name { font-size: 2rem; }
+            .timeline-item { flex-direction: column; gap: 4px; }
+            .timeline-date { width: auto; }
+            .award-item { flex-direction: column; gap: 2px; }
+            .award-date { width: auto; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ Sidebar Navigation ═══ -->
+    <nav class="nav-sidebar">
+        <a href="#hero" class="nav-name">张道涵</a>
+        <div class="nav-title-sub">浙江大学 · 国际贸易学<br>博士研究生</div>
+        <ul class="nav-links">
+            <li><a href="#education">教育经历</a></li>
+            <li><a href="#publications">学术成果</a></li>
+            <li><a href="#working-papers">工作论文</a></li>
+            <li><a href="#grants">课题资助</a></li>
+            <li><a href="#conferences">学术会议</a></li>
+            <li><a href="#awards">获奖情况</a></li>
+            <li><a href="#other">其他成果</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══ Main Content ═══ -->
+    <main class="main-content">
+
+        <!-- Hero -->
+        <section id="hero" class="hero">
+            <h1 class="hero-name">张道涵</h1>
+            <p class="hero-sub">
+                <strong>浙江大学经济学院</strong> · 国际贸易学直接攻博<br>
+                导师：<strong>马述忠</strong>教授（教育部长江学者特聘教授）
+            </p>
+            <div class="hero-contact-row">
+                <span><span class="contact-icon">✉</span> zhangdaohan@zju.edu.cn</span>
+                <span><span class="contact-icon">✆</span> 130-6000-2825</span>
+                <span><span class="contact-icon">⌂</span> 杭州 · 浙大经济学院 928</span>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <div class="section-label">教育经历</div>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <span class="timeline-date">2021.09 — 至今</span>
+                    <div class="timeline-body">
+                        <span class="inst">浙江大学</span> · 国际贸易学 · 直接攻博<br>
+                        <span class="detail">导师：马述忠（教育部长江学者特聘教授）</span>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <span class="timeline-date">2017.09 — 2021.06</span>
+                    <div class="timeline-body">
+                        <span class="inst">四川大学</span> · 国际经济与贸易（双语班）· 本科
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications">
+            <div class="section-label">学术成果</div>
+
+            <div class="pub-group">
+                <div class="pub-group-title">代表性论文 <span style="font-weight:400;font-size:0.75rem;color:var(--text-tertiary);">（*为通讯作者）</span></div>
+                <ul class="pub-list">
+                    <li class="pub-item">
+                        <span class="authors">马述忠, 贺歌, <span class="self">张道涵</span>.</span>
+                        <span class="title">海外仓对中国跨境电商出口的影响——兼论新型基础设施的贡献</span>
+                        <span class="journal">管理世界</span>, 2025, (12): 38–53.
+                        <span class="pub-tag top">权威期刊</span>
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>, 胡增玺.</span>
+                        <span class="title">数字知识流动如何促进区域协调发展——兼论经济增长和平衡发展的双重目标</span>
+                        <span class="journal">中国工业经济</span>, 2025, (2): 80–98.
+                        <span class="meta">（人大复印资料《区域与城市经济》2025年第6期全文转载）</span>
+                        <span class="pub-tag top">权威期刊</span>
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>*.</span>
+                        <span class="title">基于供需视角的数字贸易产业集聚机制：理论脉络与研究展望</span>
+                        <span class="journal">经济学动态</span>, 录用待刊.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>*, 陈逸凡.</span>
+                        <span class="title">跨境电子商务与市域协调发展——兼论跨境电商的普惠逻辑</span>
+                        <span class="journal">经济学动态</span>, 2024, (03): 77–95.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>*, 杜特.</span>
+                        <span class="title">国际时差与跨境电商出口——基于夜间消费视角的解释</span>
+                        <span class="journal">国际贸易问题</span>, 2024, (10): 87–104.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>, 潘钢健.</span>
+                        <span class="title">互联网搜索、需求适配性与跨境电商出口</span>
+                        <span class="journal">国际贸易问题</span>, 2023, (09): 52–70.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>, 刘锴, 等.</span>
+                        <span class="title">数字贸易壁垒测度及对中国出口贸易的影响——兼与DSTRI和DTRI的比较</span>
+                        <span class="journal">国际商务(对外经济贸易大学学报)</span>, 2025, (02): 32–48.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, 易子鑫, 潘钢健, <span class="self">张道涵</span>*.</span>
+                        <span class="title">东道国数据隐私保护政策与中国数字服务贸易出口——来自欧盟《通用数据保护条例》的证据</span>
+                        <span class="journal">财经论丛</span>, 2026, (01): 39–49.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, 李彦陈, <span class="self">张道涵</span>*, 刘锴.</span>
+                        <span class="title">数字服务贸易壁垒与跨境电子商务出口——来自中国跨境电商运单数据的证据</span>
+                        <span class="journal">国际经贸探索</span>, 2024, (11): 40–56.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>, 潘钢健.</span>
+                        <span class="title">数字金融与老年人健康：基于优质医疗服务可及机制视角</span>
+                        <span class="journal">求是学刊</span>, 2022, 49(05): 56–70.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">马述忠, <span class="self">张道涵</span>, 潘钢健.</span>
+                        <span class="title">电子商务对我国居民幸福感的影响——基于共同富裕视角</span>
+                        <span class="journal">计量经济学报</span>, 2022, 2(03): 510–532.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pub-group">
+                <div class="pub-group-title">国际发表 <span class="pub-tag ssci" style="margin-left:8px;">SSCI</span></div>
+                <ul class="pub-list">
+                    <li class="pub-item">
+                        <span class="authors">Ma, S., Pan, G., & <span class="self">Zhang, D.</span> (共同一作).</span>
+                        <span class="title">Revisiting the immigrant-trade links in cross-border e-commerce: evidence from Chinese immigrants in the United States.</span>
+                        <span class="journal">The World Economy</span> (JCR Q1; SSCI), 2026.
+                    </li>
+                    <li class="pub-item">
+                        <span class="authors">Ma, S., <span class="self">Zhang, D.</span>, & Guo, X.</span>
+                        <span class="title">The death of language barriers? An empirical study based on China's cross-border e-commerce.</span>
+                        <span class="journal">Applied Economics Letters</span> (SSCI), 2026, 33(5), 688–692.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pub-group">
+                <div class="pub-group-title">报纸杂志</div>
+                <ul class="pub-list">
+                    <li class="pub-item">
+                        <span class="authors">马述忠, 陈怡朵, <span class="self">张道涵</span>.</span>
+                        <span class="title">打破数字贸易壁垒助力外贸高质量发展.</span>
+                        <span class="journal">浙江日报</span>, 2024-06-19(08).
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Working Papers -->
+        <section id="working-papers">
+            <div class="section-label">工作论文</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <span class="authors">马述忠, 梁泽凡, <span class="self">张道涵</span>*.</span>
+                    <span class="title">国际回流移民与数字内容产品出口——基于供需适配及其制度环境视角</span>
+                </li>
+                <li class="pub-item">
+                    <span class="authors">马述忠, 陈佳琪, <span class="self">张道涵</span>*.</span>
+                    <span class="title">数字贸易壁垒为何削弱出口韧性——基于数字中间品"增量提质"视角</span>
+                    <span class="meta">国际经贸探索, 外审</span>
+                </li>
+                <li class="pub-item">
+                    <span class="authors">马述忠, <span class="self">张道涵</span>, 郭雪瑶, 陈勇.</span>
+                    <span class="title">Clan networks and cross-border e-commerce exports in China: A dual agglomeration perspective.</span>
+                    <span class="meta">China & World Economy (JCR Q1; SSCI), Under Review</span>
+                </li>
+                <li class="pub-item">
+                    <span class="authors">马述忠, 濮方清, 肖赵华, <span class="self">张道涵</span>.</span>
+                    <span class="title">Speak Players' Language: How Local Language Support Drives Price Premiums in Global Video Game Markets.</span>
+                </li>
+                <li class="pub-item">
+                    <span class="authors">马述忠, 李欣阳, <span class="self">张道涵</span>.</span>
+                    <span class="title">国际学生流动与数字内容出口——基于来华留学生的经验证据</span>
+                </li>
+                <li class="pub-item">
+                    <span class="authors">马述忠, 丁名卉, <span class="self">张道涵</span>.</span>
+                    <span class="title">区域数字市场一体化与国际数字服务贸易——来自欧盟《反地理封锁条例》的证据</span>
+                </li>
+                <li class="pub-item">
+                    <span class="authors">马述忠, 房超, <span class="self">张道涵</span>.</span>
+                    <span class="title">数字贸易高发展的中国逻辑：一个技术与制度交互式变迁的理论框架</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Grants -->
+        <section id="grants">
+            <div class="section-label">课题资助</div>
+            <ul class="grant-list">
+                <li class="grant-item">
+                    <div class="grant-title">"数字贸易壁垒对中国对外贸易高质量发展的影响及对策研究"</div>
+                    <div class="grant-meta">国家社会科学基金重大项目（23&ZD084）· 80万 · 2024.01–2028.12 · 参与</div>
+                </li>
+                <li class="grant-item">
+                    <div class="grant-title">"数字经济时代中国推动全球经济治理机制变革研究"</div>
+                    <div class="grant-meta">国家社会科学基金重大项目（20ZDA103）· 80万 · 2020.04–2022.04 · 参与</div>
+                </li>
+                <li class="grant-item">
+                    <div class="grant-title">"跨境电商推进我国数字贸易强国建设研究"</div>
+                    <div class="grant-meta">国家自然科学基金面上项目（71973120）· 48万 · 2020.01–2023.12 · 参与</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Conferences -->
+        <section id="conferences">
+            <div class="section-label">学术会议</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    全国高校国际贸易学科协作组第三届数字贸易论坛 · <span class="meta">浙江大学，分论坛汇报，2025年6月</span>
+                </li>
+                <li class="pub-item">
+                    全国高校国际贸易学科协作组第二届数字贸易论坛 · <span class="meta">南开大学，分论坛汇报，2024年6月</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Awards -->
+        <section id="awards">
+            <div class="section-label">获奖情况</div>
+            <ul class="award-list">
+                <li class="award-item">
+                    <span class="award-date">2025</span>
+                    <span class="award-name">博士研究生国家奖学金</span>
+                    <span class="award-granter">教育部</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-date">2024</span>
+                    <span class="award-name">博士研究生国家奖学金</span>
+                    <span class="award-granter">教育部</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-date">2020</span>
+                    <span class="award-name">本专科生国家奖学金</span>
+                    <span class="award-granter">教育部</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-date">2019</span>
+                    <span class="award-name">本专科生国家奖学金</span>
+                    <span class="award-granter">教育部</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-date">2018</span>
+                    <span class="award-name">本专科生国家奖学金</span>
+                    <span class="award-granter">教育部</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Other -->
+        <section id="other">
+            <div class="section-label">其他成果</div>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <span class="title">中级数字贸易学</span>（新编21世纪研究生系列教材）. 中国人民大学出版社, 2025年7月. <span class="meta">参编章节</span>
+                </li>
+                <li class="pub-item">
+                    <span class="title">数字贸易学</span>. 中国人民大学出版社, 2024年2月第1版. <span class="meta">参编章节</span>
+                </li>
+                <li class="pub-item">
+                    <span class="title">数字贸易学</span>. 高等教育出版社, 2022年6月第1版. <span class="meta">参编章节</span>
+                </li>
+                <li class="pub-item">
+                    <span class="meta">团体标准 T/CCPITCSC 177–2025、T/CCPITCSC 167–2025、T/CCPITCSC 176–2025 起草组成员</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="section-label">相关技能</div>
+            <div class="skills-row">
+                <span class="skill-chip">Stata（熟练）</span>
+                <span class="skill-chip">ArcGIS / ArcGIS Pro（熟练）</span>
+                <span class="skill-chip">Office（熟练）</span>
+                <span class="skill-chip">Python（熟悉）</span>
+                <span class="skill-chip">Overleaf / LaTeX（熟悉）</span>
+                <span class="skill-chip">LM Studio（熟悉）</span>
+                <span class="skill-chip">雅思 6.5</span>
+            </div>
+        </section>
+
+        <!-- Contact Footer -->
+        <footer class="contact-footer">
+            <strong>张道涵</strong><br>
+            浙江大学经济学院 · 国际贸易学博士研究生<br>
+            浙江省杭州市余杭塘路866号 · 经济学院928室<br>
+            zhangdaohan@zju.edu.cn · 130-6000-2825
+        </footer>
+
+    </main>
+
+    <!-- ═══ JavaScript ═══ -->
+    <script>
+        // ── Scroll spy for sidebar nav ──
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function updateActiveLink() {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.getBoundingClientRect().top;
+                if (top < 200) current = section.id;
+            });
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink, { passive: true });
+        updateActiveLink();
+    </script>
+</body>
+</html>
