@@ -7,17 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #fcfbf8;
+            --bg: #faf8f4;
             --surface: #ffffff;
             --text: #1a1a1a;
             --text-secondary: #555555;
             --text-tertiary: #888888;
-            --accent: #1e3a5f;
-            --accent-light: #2a5580;
-            --gold: #8b6914;
-            --gold-light: #faf3e0;
-            --border: #e8e5df;
-            --border-light: #f0ede8;
+            --accent: #5a2d38;
+            --accent-light: #7a3d4e;
+            --gold: #7a5a1a;
+            --gold-light: #f8f0e0;
+            --border: #e6e2da;
+            --border-light: #efece5;
             --nav-width: 200px;
             --content-max: 880px;
             --base: 8px;
@@ -227,8 +227,8 @@
         }
 
         .pub-tag.ssci {
-            background: #e8f0f8;
-            color: #1e3a5f;
+            background: #f0e8ec;
+            color: #5a2d38;
         }
 
         .pub-tag.top {
@@ -325,22 +325,6 @@
             color: var(--text-tertiary);
         }
 
-        /* ── Skills ── */
-        .skills-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-chip {
-            font-size: 0.8rem;
-            padding: 6px 14px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            color: var(--text-secondary);
-            background: var(--surface);
-        }
-
         /* ── Contact Footer ── */
         .contact-footer {
             margin-top: 80px;
@@ -403,7 +387,6 @@
         <ul class="nav-links">
             <li><a href="#education">教育经历</a></li>
             <li><a href="#publications">学术成果</a></li>
-            <li><a href="#working-papers">工作论文</a></li>
             <li><a href="#grants">课题资助</a></li>
             <li><a href="#conferences">学术会议</a></li>
             <li><a href="#awards">获奖情况</a></li>
@@ -544,42 +527,6 @@
             </div>
         </section>
 
-        <!-- Working Papers -->
-        <section id="working-papers">
-            <div class="section-label">工作论文</div>
-            <ul class="pub-list">
-                <li class="pub-item">
-                    <span class="authors">马述忠, 梁泽凡, <span class="self">张道涵</span>*.</span>
-                    <span class="title">国际回流移民与数字内容产品出口——基于供需适配及其制度环境视角</span>
-                </li>
-                <li class="pub-item">
-                    <span class="authors">马述忠, 陈佳琪, <span class="self">张道涵</span>*.</span>
-                    <span class="title">数字贸易壁垒为何削弱出口韧性——基于数字中间品"增量提质"视角</span>
-                    <span class="meta">国际经贸探索, 外审</span>
-                </li>
-                <li class="pub-item">
-                    <span class="authors">马述忠, <span class="self">张道涵</span>, 郭雪瑶, 陈勇.</span>
-                    <span class="title">Clan networks and cross-border e-commerce exports in China: A dual agglomeration perspective.</span>
-                    <span class="meta">China & World Economy (JCR Q1; SSCI), Under Review</span>
-                </li>
-                <li class="pub-item">
-                    <span class="authors">马述忠, 濮方清, 肖赵华, <span class="self">张道涵</span>.</span>
-                    <span class="title">Speak Players' Language: How Local Language Support Drives Price Premiums in Global Video Game Markets.</span>
-                </li>
-                <li class="pub-item">
-                    <span class="authors">马述忠, 李欣阳, <span class="self">张道涵</span>.</span>
-                    <span class="title">国际学生流动与数字内容出口——基于来华留学生的经验证据</span>
-                </li>
-                <li class="pub-item">
-                    <span class="authors">马述忠, 丁名卉, <span class="self">张道涵</span>.</span>
-                    <span class="title">区域数字市场一体化与国际数字服务贸易——来自欧盟《反地理封锁条例》的证据</span>
-                </li>
-                <li class="pub-item">
-                    <span class="authors">马述忠, 房超, <span class="self">张道涵</span>.</span>
-                    <span class="title">数字贸易高发展的中国逻辑：一个技术与制度交互式变迁的理论框架</span>
-                </li>
-            </ul>
-        </section>
 
         <!-- Grants -->
         <section id="grants">
@@ -659,24 +606,11 @@
                     <span class="title">数字贸易学</span>. 高等教育出版社, 2022年6月第1版. <span class="meta">参编章节</span>
                 </li>
                 <li class="pub-item">
-                    <span class="meta">团体标准 T/CCPITCSC 177–2025、T/CCPITCSC 167–2025、T/CCPITCSC 176–2025 起草组成员</span>
+                    团体标准 T/CCPITCSC 177–2025、T/CCPITCSC 167–2025、T/CCPITCSC 176–2025 起草组成员
                 </li>
             </ul>
         </section>
 
-        <!-- Skills -->
-        <section id="skills">
-            <div class="section-label">相关技能</div>
-            <div class="skills-row">
-                <span class="skill-chip">Stata（熟练）</span>
-                <span class="skill-chip">ArcGIS / ArcGIS Pro（熟练）</span>
-                <span class="skill-chip">Office（熟练）</span>
-                <span class="skill-chip">Python（熟悉）</span>
-                <span class="skill-chip">Overleaf / LaTeX（熟悉）</span>
-                <span class="skill-chip">LM Studio（熟悉）</span>
-                <span class="skill-chip">雅思 6.5</span>
-            </div>
-        </section>
 
         <!-- Contact Footer -->
         <footer class="contact-footer">
